@@ -1,10 +1,10 @@
-![Progress Bar](https://raw.githubusercontent.com/gmarczynski/odoo-web-progress/12.0/web_progress/static/description/progress_bar_loading_cancelling.gif)
+![Progress Bar](https://raw.githubusercontent.com/gmarczynski/odoo-web-progress/14.0/web_progress/static/description/progress_bar_loading_cancelling.gif)
 
 # Odoo module web_progress
 
 Progress bar for Odoo waiting screen, possibility to cancel an ongoing operation and a sys tray menu for all operations in progress.
 
-**web_progress** is compatible with Odoo 11.0, 12.0, 13.0, 14.0 (CE and EE).
+**web_progress** is compatible with Odoo 11.0, 12.0, 13.0, 14.0, 15.0, 16.0 (CE and EE).
 
 Author: Grzegorz Marczyński
 

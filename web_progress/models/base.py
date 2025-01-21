@@ -9,6 +9,7 @@ class GeneratorWithLenIndexable(object):
     """
     A class that mimics a generator, but also supports length and indexing
     """
+
     def __init__(self, gen, length, data):
         self.gen = gen
         self.length = length
@@ -34,7 +35,6 @@ class Base(models.AbstractModel):
     # Progress reporting
     #
 
-    @api.multi
     def with_progress(self, msg='', total=None, cancellable=True, log_level="info"):
         """
         Wrap self (current recordset) with progress reporting generator
@@ -128,21 +128,20 @@ class Base(models.AbstractModel):
             return super(Base, self).__iter__()
 
     @api.model
-    def _extract_records(self, fields_, data, log=lambda a: None):
+    def _extract_records(self, fields_, data, log=lambda a: None, limit=float('inf')):
         """
         Add progress reporting to collection used in base_import.import
         It adds progress reporting to all standard imports and additionally makes them cancellable
         """
-        extracted = super(Base, self)._extract_records(fields_, data, log=log)
+        extracted = super(Base, self)._extract_records(fields_, data, log=log, limit=limit)
         if 'progress_code' in self._context:
-            total = len(data)
+            total = min(limit, len(data) - len(self._context.get('skip_records', [])))
             return self.web_progress_iter(extracted, _("importing to {}").
-                                             format(self._description.lower()), total=total, cancellable=True,
-                                             log_level="info")
+                                          format(self._description.lower()), total=total, cancellable=True,
+                                          log_level="info")
         else:
             return extracted
 
-    @api.multi
     def _export_rows(self, fields, *args, _is_toplevel_call=True):
         """
         Add progress reporting to base export (on batch-level)
@@ -154,13 +153,13 @@ class Base(models.AbstractModel):
                 from the cache after it's been iterated in full
                 """
                 for idx in self.web_progress_iter(range(0, len(rs), 1000), _("exporting batches of 1000 lines") +
-                                                  " ({})".format(self._description)):
+                                                                           " ({})".format(self._description)):
                     sub = rs[idx:idx + 1000]
                     yield sub
-                    rs.invalidate_cache(ids=sub.ids)
+                    sub.invalidate_recordset()
 
             ret = []
             for sub in splittor(self):
                 ret += super(Base, sub)._export_rows(fields, _is_toplevel_call=_is_toplevel_call)
             return ret
-        return super(Base, self)._export_rows(fields, *args, _is_toplevel_call=_is_toplevel_call)
+        return super(Base, self)._export_rows(fields, _is_toplevel_call=_is_toplevel_call)

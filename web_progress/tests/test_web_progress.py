@@ -1,5 +1,7 @@
-from odoo.tests import common
-from odoo import exceptions
+from odoo.tests import common, tagged
+from odoo import exceptions, api, registry
+from odoo.tools import mute_logger
+from psycopg2 import ProgrammingError
 import uuid
 import logging
 from ..models.web_progress import last_report_time
@@ -7,9 +9,8 @@ from ..models.web_progress import last_report_time
 _logger = logging.getLogger(__name__)
 
 
-class WebProgressTest(common.SavepointCase):
-    at_install = True
-    post_install = False
+@tagged('at_install', '-post_install')
+class WebProgressTest(common.TransactionCase):
 
     def check_all_progress_data_empty(self):
         """
@@ -116,3 +117,31 @@ class WebProgressTest(common.SavepointCase):
         self.partner_ids.web_progress_percent(0, "Start")
         self.partner_ids.web_progress_percent(50, "Middle")
         self.partner_ids.web_progress_percent(100, "End")
+
+
+class WebProgressTestAllProgress(common.TransactionCase):
+    at_install = True
+    post_install = False
+
+    @mute_logger('odoo.sql_db')
+    def test_get_all_progress(self):
+        """
+        Check call to get_all_progress without and with parameters.
+        Verify if the parameter is properly escaped in the internal SQL query.
+        """
+        progress_code = str(uuid.uuid4())
+        partner_obj = self.env['res.partner'].with_context(progress_code=progress_code)
+        partner_obj.web_progress_percent(0, "Start")
+        with registry(self.env.cr.dbname).cursor() as new_cr:
+            # Create a new environment with a new cursor
+            new_env = api.Environment(new_cr, self.env.uid, self.env.context)
+            progress_obj = self.env['web.progress'].with_env(new_env)
+            res = progress_obj.get_all_progress()
+            self.assertEqual(res, [{'code': progress_code}])
+            res = progress_obj.get_all_progress(0)
+            self.assertEqual(res, [])
+            with self.assertRaises(ProgrammingError) as e:
+                progress_obj.get_all_progress("0 SECOND' GROUP BY code; "
+                                              "SELECT code, array_agg(state) FROM web_progress "
+                                              "WHERE create_date > timezone('utc', now()) - INTERVAL '10")
+            new_cr.rollback()
