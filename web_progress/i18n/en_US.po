@@ -23,31 +23,31 @@ msgstr "Base"
 #. module: web_progress
 #: model:ir.model,name:web_progress.model_base_import_import
 msgid "Base Import"
-msgstr "Base d'importation"
+msgstr "Base Import"
 
 #. module: web_progress
 #. odoo-javascript
 #: code:addons/web_progress/static/src/xml/progress_bar.xml:0
 #, python-format
 msgid "Cancel ongoing operation?"
-msgstr "Annuler l'opération en cours ?"
+msgstr "Cancel ongoing operation?"
 
 #. module: web_progress
 #: model:ir.model.fields,field_description:web_progress.field_web_progress__cancellable
 msgid "Cancellable"
-msgstr "Annulable"
+msgstr "Cancellable"
 
 #. module: web_progress
 #: model:ir.model.fields.selection,name:web_progress.selection__web_progress__state__cancel
 msgid "Cancelled"
-msgstr "Annulé"
+msgstr "Cancelled"
 
 #. module: web_progress
 #. odoo-javascript
 #: code:addons/web_progress/static/src/js/progress_bar.js:0
 #, python-format
 msgid "Cancelling..."
-msgstr "Annulation..."
+msgstr "Cancelling..."
 
 #. module: web_progress
 #: model:ir.model.fields,field_description:web_progress.field_web_progress__code
@@ -57,35 +57,35 @@ msgstr "Code"
 #. module: web_progress
 #: model:ir.model.fields,field_description:web_progress.field_web_progress__create_uid
 msgid "Created by"
-msgstr "Créé par"
+msgstr "Created by"
 
 #. module: web_progress
 #: model:ir.model.fields,field_description:web_progress.field_web_progress__create_date
 msgid "Created on"
-msgstr "Créé le"
+msgstr "Created on"
 
 #. module: web_progress
 #: model:ir.model.fields,field_description:web_progress.field_web_progress__display_name
 msgid "Display Name"
-msgstr "Nom affiché"
+msgstr "Display Name"
 
 #. module: web_progress
 #: model:ir.model.fields,field_description:web_progress.field_web_progress__done
 #: model:ir.model.fields.selection,name:web_progress.selection__web_progress__state__done
 msgid "Done"
-msgstr "Fait"
+msgstr "Done"
 
 #. module: web_progress
 #: model:ir.model.fields,field_description:web_progress.field_web_progress__time_elapsed
 msgid "Elapsed Time"
-msgstr "Temps écoulé"
+msgstr "Elapsed Time"
 
 #. module: web_progress
 #. odoo-javascript
 #: code:addons/web_progress/static/src/js/progress_bar.js:0
 #, python-format
 msgid "Est. time left: "
-msgstr "Temps restant estimé : "
+msgstr "Est. time left: "
 
 #. module: web_progress
 #: model:ir.model.fields,field_description:web_progress.field_web_progress__id
@@ -97,22 +97,22 @@ msgstr "ID"
 #: code:addons/web_progress/models/base.py:0
 #, python-format
 msgid "Iterating on model {}"
-msgstr "Itération sur modèle {}"
+msgstr "Iterating on model {}"
 
 #. module: web_progress
 #: model:ir.model.fields,field_description:web_progress.field_web_progress____last_update
 msgid "Last Modified on"
-msgstr "Dernière modification le"
+msgstr "Last Modified on"
 
 #. module: web_progress
 #: model:ir.model.fields,field_description:web_progress.field_web_progress__write_uid
 msgid "Last Updated by"
-msgstr "Dernière mise à jour par"
+msgstr "Last Updated by"
 
 #. module: web_progress
 #: model:ir.model.fields,field_description:web_progress.field_web_progress__write_date
 msgid "Last Updated on"
-msgstr "Dernière mise à jour le"
+msgstr "Last Updated on"
 
 #. module: web_progress
 #: model:ir.model.fields,field_description:web_progress.field_web_progress__msg
@@ -124,24 +124,24 @@ msgstr "Message"
 #: code:addons/web_progress/static/src/xml/progress_bar.xml:0
 #, python-format
 msgid "No"
-msgstr "Non"
+msgstr "No"
 
 #. module: web_progress
 #: model:ir.model.fields.selection,name:web_progress.selection__web_progress__state__ongoing
 msgid "Ongoing"
-msgstr "En cours"
+msgstr "Ongoing"
 
 #. module: web_progress
 #: model:ir.model,name:web_progress.model_web_progress
 msgid "Operation Progress"
-msgstr "Avancement de l'opération"
+msgstr "Operation Progress"
 
 #. module: web_progress
 #. odoo-python
 #: code:addons/web_progress/models/web_progress.py:0
 #, python-format
 msgid "Operation has been cancelled by"
-msgstr "L'opération a été annulée par"
+msgstr "Operation has been cancelled by"
 
 #. module: web_progress
 #. odoo-javascript
@@ -149,42 +149,42 @@ msgstr "L'opération a été annulée par"
 #: model:ir.model.fields,field_description:web_progress.field_web_progress__progress
 #, python-format
 msgid "Progress"
-msgstr "Avancement"
+msgstr "Progress"
 
 #. module: web_progress
 #: model:ir.model.fields,field_description:web_progress.field_web_progress__progress_total
 msgid "Progress Total"
-msgstr "Progrès Total"
+msgstr "Progress Total"
 
 #. module: web_progress
 #: model:ir.model.fields,field_description:web_progress.field_web_progress__recur_depth
 msgid "Recursion depth"
-msgstr "Profondeur de récursion"
+msgstr "Recursion depth"
 
 #. module: web_progress
 #: model:ir.model,name:web_progress.model_ir_actions_report
 msgid "Report Action"
-msgstr "Rapport"
+msgstr "Report Action"
 
 #. module: web_progress
 #: model:ir.model,name:web_progress.model_ir_cron
 msgid "Scheduled Actions"
-msgstr "Actions planifiées"
+msgstr "Scheduled Actions"
 
 #. module: web_progress
 #: model:ir.model.fields,field_description:web_progress.field_web_progress__state
 msgid "State"
-msgstr "État"
+msgstr "State"
 
 #. module: web_progress
 #: model:ir.model.fields,field_description:web_progress.field_web_progress__time_left
 msgid "Time Left"
-msgstr "Temps restant"
+msgstr "Time Left"
 
 #. module: web_progress
 #: model:ir.model.fields,field_description:web_progress.field_web_progress__time_total
 msgid "Time Total"
-msgstr "Temps Total"
+msgstr "Time Total"
 
 #. module: web_progress
 #: model:ir.model.fields,field_description:web_progress.field_web_progress__total
@@ -196,21 +196,21 @@ msgstr "Total"
 #: code:addons/web_progress/static/src/xml/progress_bar.xml:0
 #, python-format
 msgid "Yes"
-msgstr "Oui"
+msgstr "Yes"
 
 #. module: web_progress
 #. odoo-python
 #: code:addons/web_progress/models/base.py:0
 #, python-format
 msgid "exporting batches of 1000 lines"
-msgstr "exportation de lots de 1000 lignes"
+msgstr "exporting batches of 1000 lines"
 
 #. module: web_progress
 #. odoo-python
 #: code:addons/web_progress/models/base.py:0
 #, python-format
 msgid "importing to {}"
-msgstr "l'importation à {}"
+msgstr "importing to {}"
 
 #. module: web_progress
 #. odoo-javascript
@@ -231,4 +231,4 @@ msgstr "simple"
 #: code:addons/web_progress/static/src/xml/progress_bar.xml:0
 #, python-format
 msgid "standard"
-msgstr "norme"
+msgstr "standard"
